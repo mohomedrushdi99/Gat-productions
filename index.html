@@ -76,13 +76,50 @@
       padding: 14px 5%;
       border-bottom: 1px solid var(--glass-border);
     }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px; font-weight: 600;
-      letter-spacing: 4px;
-      color: var(--white);
-      text-transform: uppercase;
-    }
+    /* Nav Logo Image */
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-logo-img {
+  height: 48px;          /* Default height — adjust to taste */
+  width: auto;           /* Keeps aspect ratio intact */
+  object-fit: contain;
+  display: block;
+  transition: height 0.5s ease, opacity 0.3s ease, filter 0.3s ease;
+  filter: brightness(1);
+}
+
+/* Shrink logo when nav scrolls */
+nav.scrolled .nav-logo-img {
+  height: 36px;          /* Slightly smaller when scrolled */
+}
+
+/* Subtle hover glow */
+.nav-logo-link:hover .nav-logo-img {
+  opacity: 0.85;
+  filter: brightness(1.15) drop-shadow(0 0 8px rgba(201,168,76,0.4));
+}
+
+/* Mobile: keep logo visible and well-sized */
+@media (max-width: 900px) {
+  .nav-logo-img {
+    height: 40px;
+  }
+  nav.scrolled .nav-logo-img {
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo-img {
+    height: 34px;
+  }
+}
+    
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 40px; list-style: none; }
     .nav-links a {
@@ -509,10 +546,27 @@
     }
     .service-card:hover .service-link { opacity: 1; }
     /* Colored gradient for each service */
-    .svc-weddings .service-card-bg { background: linear-gradient(135deg, #1a3a2a, #2d5a3d), url('images/GAT-Weddings-Black.webp') center/cover; }
-    .svc-events .service-card-bg { background: linear-gradient(135deg, #0a2a1a, #1a4d2d), url('images/GAT-Events-Black.webp') center/cover; }
-    .svc-glamour .service-card-bg { background: linear-gradient(135deg, #1a2a0a, #2d4d1a), url('images/GAT-Glamour & Portraits-Black.webp') center/cover; }
-
+   .svc-weddings .service-card-bg {
+  background: linear-gradient(135deg, #011a10, #01311F);
+  background-image: url('images/GAT-Weddings-Black.webp');
+  background-size: 55%;
+  background-repeat: no-repeat;
+  background-position: center 30%;
+}
+.svc-events .service-card-bg {
+  background: linear-gradient(135deg, #0a1a10, #01311F);
+  background-image: url('images/GAT-Events-Black.webp');
+  background-size: 55%;
+  background-repeat: no-repeat;
+  background-position: center 30%;
+}
+.svc-glamour .service-card-bg {
+  background: linear-gradient(135deg, #101a01, #1a3010);
+  background-image: url('images/GAT-Glamour & Portraits-Black.webp');
+  background-size: 55%;
+  background-repeat: no-repeat;
+  background-position: center 30%;
+}
     /* ══════════════════════ ACCESSORIES / GEAR ══════════════════════ */
     #accessories {
       padding: 120px 8%;
@@ -635,6 +689,33 @@
     footer .f-copy a { color: rgba(255,255,255,0.5); text-decoration: none; }
     footer .f-copy a:hover { color: var(--gold); }
 
+    /* Footer Logo Image */
+.f-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.f-logo-img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0.9);
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.f-logo-link:hover .f-logo-img {
+  filter: brightness(1.15) drop-shadow(0 0 8px rgba(201,168,76,0.4));
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .f-logo-img {
+    height: 34px;
+  }
+}
+
     /* ══════════════════════ SCROLL TO TOP ══════════════════════ */
     .scroll-top {
       position: fixed; bottom: 30px; right: 30px;
@@ -703,7 +784,9 @@
 
   <!-- NAV -->
   <nav id="mainNav">
-    <div class="nav-logo">G<span>A</span>T</div>
+    <a href="#home" class="nav-logo-link">
+  <img src="images/Topic-w.png" alt="GAT Productions" class="nav-logo-img" />
+</a>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -829,7 +912,7 @@
     </div>
     <div class="services-grid">
       <div class="service-card svc-weddings reveal">
-        <div class="service-card-bg" style="background:linear-gradient(to top, #011a10, #01311F);"></div>
+        <div class="service-card-bg"></div>
         <div class="service-card-overlay"></div>
         <div class="service-card-content">
           <div class="service-num">01 / 03</div>
@@ -839,7 +922,7 @@
         </div>
       </div>
       <div class="service-card svc-events reveal" style="transition-delay:0.15s">
-        <div class="service-card-bg" style="background:linear-gradient(to top, #0a1a10, #01311F);"></div>
+        <div class="service-card-bg"></div>
         <div class="service-card-overlay"></div>
         <div class="service-card-content">
           <div class="service-num">02 / 03</div>
@@ -849,7 +932,7 @@
         </div>
       </div>
       <div class="service-card svc-glamour reveal" style="transition-delay:0.3s">
-        <div class="service-card-bg" style="background:linear-gradient(to top, #101a01, #2a3e10);"></div>
+        <div class="service-card-bg"></div>
         <div class="service-card-overlay"></div>
         <div class="service-card-content">
           <div class="service-num">03 / 03</div>
@@ -907,7 +990,11 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="f-logo">G<span>A</span>T <small style="font-size:12px;letter-spacing:2px;opacity:0.6">PRODUCTIONS</small></div>
+    <div class="f-logo">
+  <a href="#home" class="f-logo-link">
+    <img src="images/Topic-w.png" alt="GAT Productions" class="f-logo-img" />
+  </a>
+</div>
     <div class="f-copy">
       &copy; 2025 GAT Productions. Crafted by
       <a href="https://www.instagram.com/zen.solutions_?igsh=MXBieWs1ZDNyeWZoZg%3D%3D&utm_source=qr" target="_blank">Zen Solutions</a>
